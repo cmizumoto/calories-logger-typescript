@@ -1,15 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
 }
 .wrapper {
   max-width: 960px;
   margin: 0 auto;
 }
+header {
+  text-align: center;
+}
 h1 {
   margin: 40px auto;
-  color: #ff0aa7;
-  text-align: center;
+  color: #412b7c;
 }
 ul {
   padding: 0;
@@ -21,7 +27,7 @@ li {
   margin: 10px auto;
 }
 li h4 {
-  color: #ff0aa7;
+  color: #412b7c;
   margin: 0;
   text-transform: capitalize;
 }
@@ -42,15 +48,17 @@ form {
 label {
   display: block;
   font-weight: bold;
-  font-size: 0.8em;
+  font-size: 1rem;
   color: #333;
   margin: 16px 0 6px;
 }
+
 input,
 select {
-  padding: 6px;
+  padding: 10px;
   border: 1px solid #e1e1e1;
   border-radius: 4px;
+  font-size: 1rem;
 }
 .field {
   display: inline-block;
@@ -59,15 +67,21 @@ select {
 button {
   color: white;
   border: 0;
-  background: #ff0aa7;
-  padding: 6px;
+  background: #412b7c;
+  padding: 10px;
   min-width: 80px;
   border-radius: 4px;
 }
+footer {
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  bottom: 0;
+}
+
 footer a {
   text-align: center;
   display: block;
   color: #999;
-  margin-top: 40px;
   font-size: 0.7em;
 }

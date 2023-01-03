@@ -2,41 +2,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TypeScript Tutorial</title>
+    <title>Calories Logger</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="wrapper">
+    <header>
       <h1>Calorie Logger</h1>
+      <p>Keep track of your calories</p>
+    </header>
+    <form class="new-item-form">
+      <div class="field">
+        <label>Type:</label>
+        <select id="type">
+          <option value="meal">Meal</option>
+          <option value="snack">Snack</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Food:</label>
+        <input type="text" id="food" />
+      </div>
+      <div class="field">
+        <label>Date:</label>
+        <input type="date" id="date" />
+      </div>
+      <div class="field">
+        <label>Amount (kcal):</label>
+        <input type="number" id="amount" min="0" />
+      </div>
+      <button>Add</button>
+    </form>
 
+    <div class="wrapper">
       <!-- output list -->
       <ul class="item-list"></ul>
     </div>
 
     <footer>
-      <form class="new-item-form">
-        <div class="field">
-          <label>Type:</label>
-          <select id="type">
-            <option value="meal">Meal</option>
-            <option value="snack">Snack</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Food:</label>
-          <input type="text" id="food" />
-        </div>
-        <div class="field">
-          <label>Date:</label>
-          <input type="date" id="date" />
-        </div>
-        <div class="field">
-          <label>Amount (kcal):</label>
-          <input type="number" id="amount" min="0" />
-        </div>
-        <button>Add</button>
-      </form>
-
       <a href="https://www.thenetninja.co.uk">Used the "The Net Ninja" files for reference</a>
     </footer>
 
