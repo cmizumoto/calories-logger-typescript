@@ -1,17 +1,35 @@
+// Here we specify what isPerson is and all its expected contents
+// interface isPerson {
+//   name: string;
+//   age: number;
+//   speak(a: string): void;
+//   spend(a: number): number;
+// }
 // Now here we can create a variable and pass isPerson as an expected object
 // Note that must correspond to everything we listed above, anything different will cause an error
-const me = {
-    name: "miguel",
-    age: 30,
-    speak(text) {
-        console.log(text);
-    },
-    spend(amount) {
-        console.log("I spent", amount);
-        return amount;
-    },
-};
-import { Meal } from "./classes/meals.js";
+// const me: isPerson = {
+//   name: "miguel",
+//   age: 30,
+//   speak(text: string): void {
+//     console.log(text);
+//   },
+//   spend(amount: number): number {
+//     console.log("I spent", amount);
+//     return amount;
+//   },
+// };
+import { Meal } from "./classes/Meals.js";
+import { Snack } from "./classes/Snacks.js";
+// Now we can create variables that are specific to a interface, in this case must return a string following the HasFormater
+let foodOne;
+let foodTwo;
+// Assign those variables above to new types using the constructor and formatter
+foodOne = new Snack("candy", "03-02-2022", 40);
+foodTwo = new Meal("sandwich", "03-02-2022", 100);
+// Also possible to create another array that only holds variables that have HasFormatter interface
+let foods = [];
+foods.push(foodOne);
+foods.push(foodTwo);
 const mealOne = new Meal("Rice", "01-01-2022", 100);
 const mealTwo = new Meal("Beans", "01-01-2022", 200);
 // In this array we only allow strings to be stored inside it
@@ -44,7 +62,14 @@ const formDate = document.querySelector("#date");
 const formAmount = document.querySelector("#amount");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    let doc;
+    if (formType.value === "meal") {
+        doc = new Meal(formFood.value, formDate.value, formAmount.valueAsNumber);
+    }
+    else {
+        doc = new Snack(formFood.value, formDate.value, formAmount.valueAsNumber);
+    }
     // here we log every element using the value property.
     // in the case of the date or number, it is possible to extract using valueAsDate and valueAsNumber
-    console.log(formType.value, formFood.value, formDate.valueAsDate, formAmount.valueAsNumber);
+    console.log(doc);
 });

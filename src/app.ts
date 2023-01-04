@@ -1,26 +1,40 @@
 // Here we specify what isPerson is and all its expected contents
-interface isPerson {
-  name: string;
-  age: number;
-  speak(a: string): void;
-  spend(a: number): number;
-}
+// interface isPerson {
+//   name: string;
+//   age: number;
+//   speak(a: string): void;
+//   spend(a: number): number;
+// }
 
 // Now here we can create a variable and pass isPerson as an expected object
 // Note that must correspond to everything we listed above, anything different will cause an error
-const me: isPerson = {
-  name: "miguel",
-  age: 30,
-  speak(text: string): void {
-    console.log(text);
-  },
-  spend(amount: number): number {
-    console.log("I spent", amount);
-    return amount;
-  },
-};
+// const me: isPerson = {
+//   name: "miguel",
+//   age: 30,
+//   speak(text: string): void {
+//     console.log(text);
+//   },
+//   spend(amount: number): number {
+//     console.log("I spent", amount);
+//     return amount;
+//   },
+// };
+import { Meal } from "./classes/Meals.js";
+import { Snack } from "./classes/Snacks.js";
+import { HasFormatter } from "./interfaces/HasFormatter.js";
 
-import { Meal } from "./classes/meals.js";
+// Now we can create variables that are specific to a interface, in this case must return a string following the HasFormater
+let foodOne: HasFormatter;
+let foodTwo: HasFormatter;
+
+// Assign those variables above to new types using the constructor and formatter
+foodOne = new Snack("candy", "03-02-2022", 40);
+foodTwo = new Meal("sandwich", "03-02-2022", 100);
+
+// Also possible to create another array that only holds variables that have HasFormatter interface
+let foods: HasFormatter[] = [];
+foods.push(foodOne);
+foods.push(foodTwo);
 
 const mealOne = new Meal("Rice", "01-01-2022", 100);
 const mealTwo = new Meal("Beans", "01-01-2022", 200);
@@ -61,7 +75,15 @@ const formAmount = document.querySelector("#amount") as HTMLInputElement;
 form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
 
+  let doc: HasFormatter;
+
+  if (formType.value === "meal") {
+    doc = new Meal(formFood.value, formDate.value, formAmount.valueAsNumber);
+  } else {
+    doc = new Snack(formFood.value, formDate.value, formAmount.valueAsNumber);
+  }
+
   // here we log every element using the value property.
   // in the case of the date or number, it is possible to extract using valueAsDate and valueAsNumber
-  console.log(formType.value, formFood.value, formDate.valueAsDate, formAmount.valueAsNumber);
+  console.log(doc);
 });
