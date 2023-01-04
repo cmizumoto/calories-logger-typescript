@@ -18,6 +18,7 @@
 //     return amount;
 //   },
 // };
+import { ListTemplate } from "./classes/ListTemplate.js";
 import { Meal } from "./classes/Meals.js";
 import { Snack } from "./classes/Snacks.js";
 // Now we can create variables that are specific to a interface, in this case must return a string following the HasFormater
@@ -60,6 +61,8 @@ const formType = document.querySelector("#type");
 const formFood = document.querySelector("#food");
 const formDate = document.querySelector("#date");
 const formAmount = document.querySelector("#amount");
+const ul = document.querySelector("ul");
+const list = new ListTemplate(ul);
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     let doc;
@@ -69,6 +72,11 @@ form.addEventListener("submit", (e) => {
     else {
         doc = new Snack(formFood.value, formDate.value, formAmount.valueAsNumber);
     }
+    list.render(doc, formType.value, "end");
+    formType.value = "Meal";
+    formFood.value = "";
+    formDate.value = "";
+    formAmount.value = "";
     // here we log every element using the value property.
     // in the case of the date or number, it is possible to extract using valueAsDate and valueAsNumber
     console.log(doc);

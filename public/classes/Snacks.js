@@ -18,6 +18,6 @@ export class Snack {
     }
     // Now as declared in the interfaces, we can use the format method that must return a string
     format() {
-        return `${this.snack} with ${this.amount} was consumed on ${this.date}`;
+        return `${this.snack} with ${this.amount} kcal was consumed on ${this.date}`;
     }
 }

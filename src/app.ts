@@ -19,6 +19,7 @@
 //     return amount;
 //   },
 // };
+import { ListTemplate } from "./classes/ListTemplate.js";
 import { Meal } from "./classes/Meals.js";
 import { Snack } from "./classes/Snacks.js";
 import { HasFormatter } from "./interfaces/HasFormatter.js";
@@ -72,6 +73,9 @@ const formFood = document.querySelector("#food") as HTMLInputElement;
 const formDate = document.querySelector("#date") as HTMLInputElement;
 const formAmount = document.querySelector("#amount") as HTMLInputElement;
 
+const ul = document.querySelector("ul")!;
+const list = new ListTemplate(ul);
+
 form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
 
@@ -83,6 +87,12 @@ form.addEventListener("submit", (e: Event) => {
     doc = new Snack(formFood.value, formDate.value, formAmount.valueAsNumber);
   }
 
+  list.render(doc, formType.value, "end");
+
+  formType.value = "Meal";
+  formFood.value = "";
+  formDate.value = "";
+  formAmount.value = "";
   // here we log every element using the value property.
   // in the case of the date or number, it is possible to extract using valueAsDate and valueAsNumber
   console.log(doc);

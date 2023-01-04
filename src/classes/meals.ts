@@ -18,6 +18,6 @@ export class Meal implements HasFormatter {
 
   // Now as declared in the interfaces, we can use the format method that must return a string
   format() {
-    return `${this.food} with ${this.amount} was consumed on ${this.date}`;
+    return `${this.food} with ${this.amount} kcal was consumed on ${this.date}`;
   }
 }
