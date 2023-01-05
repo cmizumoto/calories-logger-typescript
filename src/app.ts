@@ -79,12 +79,18 @@ const list = new ListTemplate(ul);
 form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
 
-  let doc: HasFormatter;
+  // Here to avoid code duplication, we are using tuples to create the array in doc
+  // Now we declare the value and the tupple
+  let values: [string, string, number];
+  // And now set what the value is
+  values = [formFood.value, formDate.value, formAmount.valueAsNumber];
 
+  let doc: HasFormatter;
   if (formType.value === "meal") {
-    doc = new Meal(formFood.value, formDate.value, formAmount.valueAsNumber);
+    // Finally we use the values by spreading and creating a new array with the values received from the inputs
+    doc = new Meal(...values);
   } else {
-    doc = new Snack(formFood.value, formDate.value, formAmount.valueAsNumber);
+    doc = new Snack(...values);
   }
 
   list.render(doc, formType.value, "end");
@@ -178,3 +184,11 @@ const artTwo: Art<object> = {
   // resourceType: 4,
   data: { title: "name of the wind" },
 };
+
+/* 
+  TUPLES
+  The types we define are fixed after we initialize
+  In the example bellow, after we setup de tuple, it will not accept other values than the one we defined
+*/
+const tup: [string, number, boolean] = ["name", 23, false];
+// const tupError: [string, number, object] = [22, "miguel", { test: "test" }];
